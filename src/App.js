@@ -1,106 +1,91 @@
-import {useState} from 'react'
-import Navigation from './Navigation/Nav';
-import Products from './Products/Products';
-import Recommended from './Recommended/Recommended';
-import Sidebar from './Sidebar/Sidebar';
-import data from './db/data.js';
-import Card from './components/Card.js';
-import "./index.css"
+import { useState } from "react";
+import Navigation from "./Navigation/Nav";
+import Products from "./Products/Products";
+import Recommended from "./Recommended/Recommended";
+import Sidebar from "./Sidebar/Sidebar";
+import data from "./db/data.js";
+import Card from "./components/Card.js";
+import "./index.css";
 
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-
   const [query, setQuery] = useState("");
 
+  // Handle text input search
   const handleInputChange = (event) => {
     setQuery(event.target.value);
   };
-  let filteredProducts = [];
-  let filteredItems = [];
-  let result
 
-  // input filtering
-  filteredItems = data.filter((item) =>
-    item.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
-  );
+  // Handle radio or button filter
+  const handleFilterChange = (event) => {
+    const value = event.target.value;
+    setSelectedCategory(value === "all" ? null : value);
+  };
 
+  // Filter data based on query and selected category
+  const getFilteredData = () => {
+    let filtered = data;
 
-  // radio filtering
-  const handleChange = (event) => {
-  const value = event.target.value;
-
-  if (value === "all") {
-    setSelectedCategory(null); // reset filter
-  } else {
-    setSelectedCategory(value);
-  }
-};
-
-  // button filtering
-  const handleClick = (event) => {
-  const value = event.target.value;
-
-  if (value === "all") {
-    setSelectedCategory(null); // reset filter
-  } else {
-    setSelectedCategory(value);
-  }
-};
-
-  function FilteredData(data, selected, query) {
-    let filteredData = data;
-
+    // Text search
     if (query) {
-      filteredData =filteredItems
+      filtered = filtered.filter((item) =>
+        item.title.toLowerCase().includes(query.toLowerCase())
+      );
     }
-    if (selected) {
-  filteredData = filteredData.filter(item => {
-    const { category, company, price, title } = item;
 
-    // category & company
-    if (category === selected) return true;
-    if (company === selected) return true;
-    if (title === selected) return true;
+    // Category / company / title / price filtering
+    if (selectedCategory) {
+      filtered = filtered.filter((item) => {
+        const { category, company, title, price } = item;
 
-    // price ranges
-    if (selected === "0-50") return price <= 50;
-    if (selected === "51-100") return price > 50 && price <= 100;
-    if (selected === "101-200") return price > 100 && price <= 200;
+        if (category === selectedCategory) return true;
+        if (company === selectedCategory) return true;
+        if (title === selectedCategory) return true;
 
-    // all prices
-    if (selected === "all") return true;
+        // Price ranges
+        if (selectedCategory === "0-50") return price <= 50;
+        if (selectedCategory === "51-100") return price > 50 && price <= 100;
+        if (selectedCategory === "101-200") return price > 100 && price <= 200;
 
-    return false;
-  });
-}
+        return false;
+      });
+    }
 
+    return filtered.map(
+      ({
+        id,
+        image,
+        title,
+        star,
+        price,
+        description,
+        company,
+        reviewes,
+        category,
+      }) => (
+        <Card
+          key={id}
+          image={image}
+          title={title}
+          star={star}
+          price={price}
+          description={description}
+          company={company}
+          reviewes={reviewes}
+          category={category}
+        />
+      )
+    );
+  };
 
-
-    return filteredData.map(({id, image, title, star, price, description, company, reviewes, category})=>(
-    <Card
-    key={id}
-    image={image}
-    title={title}
-    star={star}
-    price={price}
-    description={description}
-    company={company}
-    reviewes={reviewes}
-    category={category}
-    />
-  ));
-  }
-
-  result = filteredProducts = FilteredData(data, selectedCategory, query);
+  const result = getFilteredData();
 
   return (
     <div>
-        <>
-        <Sidebar handleChange={handleChange} />
-        <Navigation query={query} handleInputChange={handleInputChange} />
-        <Recommended handleClick={handleClick} />
-        <Products result={result} />
-        </>
+      <Sidebar handleChange={handleFilterChange} />
+      <Navigation query={query} handleInputChange={handleInputChange} />
+      <Recommended handleClick={handleFilterChange} />
+      <Products result={result} />
     </div>
-  )
+  );
 }
