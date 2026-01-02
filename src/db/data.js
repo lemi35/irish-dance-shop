@@ -1,4 +1,3 @@
-import { AiFillStar } from "react-icons/ai";
 import celticArch from "../assets/celtic_arch.jpg";
 import fayes from "../assets/fayes.jpg";
 import pacelli from "../assets/pacelli.jpg";
