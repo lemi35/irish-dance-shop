@@ -1,4 +1,3 @@
-import React from 'react'
 import './Recommended.css'
 import Buttons from '../components/Buttons';
 

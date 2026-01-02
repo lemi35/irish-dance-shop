@@ -1,4 +1,3 @@
-import React from 'react'
 import './Sidebar.css';
 import Category from './Category/Category';
 import Company from './Company/Company';

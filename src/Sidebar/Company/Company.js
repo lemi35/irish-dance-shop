@@ -1,4 +1,3 @@
-import React from 'react'
 import './Company.css';
 import Input from '../../components/Input';
 

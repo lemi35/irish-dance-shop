@@ -1,6 +1,4 @@
-import React from 'react'
-import { AiFillStar } from "react-icons/ai";
-import celticArch from "../assets/celtic_arch.jpg";
+
 import { BsFillBagHeartFill } from "react-icons/bs";
 
 

@@ -1,4 +1,3 @@
-import React from 'react'
 
 function Buttons({onClickHandler, value, title}) {
   return (

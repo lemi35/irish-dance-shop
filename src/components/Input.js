@@ -1,4 +1,3 @@
-import React from "react";
 
 function Input({ handleChange, value, name, color, title }) {
   return (
