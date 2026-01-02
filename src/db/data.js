@@ -10,8 +10,8 @@ const data = [
   {
     id: 1,
     title: "Celtic Arch Irish Dance Shoes",
-    price: 169.99,
-    star: <AiFillStar className="rating-star" />,
+    price: 169.90,
+    star: 5.0,
     description:
       "High-quality Irish dance shoes for beginners and professionals.",
     image: celticArch,
@@ -22,8 +22,8 @@ const data = [
   {
     id: 2,
     title: "Fayes Irish Dance Shoes",
-    price: 145.0,
-    star: 4.5,
+    price: 145.90,
+    star: 3.5,
     description:
       "High-quality Irish dance shoes for beginners and professionals.",
     image: fayes,
@@ -34,8 +34,8 @@ const data = [
   {
     id: 3,
     title: "Pacelli Feather Flex Irish Dance Shoes",
-    price: 118.99,
-    star: 4.5,
+    price: 118.90,
+    star: 3.0,
     description:
       "High-quality Irish dance shoes for beginners and professionals.",
     image: pacelli,
@@ -46,7 +46,7 @@ const data = [
   {
     id: 4,
     title: "Hullachan Irish Dance Shoes",
-    price: 54.99,
+    price: 54.90,
     star: 4.5,
     description:
       "High-quality Irish dance shoes for beginners and professionals.",
@@ -58,8 +58,8 @@ const data = [
   {
     id: 5,
     title: "Brigit Irish Dance bun wig",
-    price: 80.00,
-    star: 4.5,
+    price: 80.90,
+    star: 4.0,
     description:
       "High-quality Irish dance bun wigs for beginners and professionals.",
     image: brigit,

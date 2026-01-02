@@ -4,7 +4,7 @@ import Company from './Company/Company';
 import Price from './Price/Price';  
 
 function Sidebar({handleChange}) {
-  console.log(handleChange);
+  
   return (
     <>
     <section className='sidebar'>

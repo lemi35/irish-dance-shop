@@ -52,3 +52,9 @@
   font-size: 1.5rem;
   color: #555;
 }
+
+.total-reviews {
+  margin-left: 0.5rem;
+  color: #615d5d;
+  font-size: 0.9rem;
+}

@@ -16,15 +16,15 @@ function Nav({handleInputChange, query}) {
         className="nav-search" />
       </div>
       <div className="profile-container">
-        <a href="#">
+       <button className="nav-icon-btn">
           <FiHeart className="nav-icons"/>
-        </a>
-        <a href="#">
+        </button>
+        <button className="nav-icon-btn">
           <AiOutlineUserAdd className="nav-icons"/>
-        </a>
-        <a href="#">
+        </button>
+        <button className="nav-icon-btn">
           <AiOutlineShoppingCart className="nav-icons"/>
-        </a>
+        </button>
       </div>
     </nav>
   );

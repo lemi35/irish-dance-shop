@@ -60,7 +60,7 @@ export default function App() {
         price,
         description,
         company,
-        reviewes,
+        reviews,
         category,
       }) => (
         <Card
@@ -71,7 +71,7 @@ export default function App() {
           price={price}
           description={description}
           company={company}
-          reviewes={reviewes}
+          reviews={reviews}
           category={category}
         />
       )
